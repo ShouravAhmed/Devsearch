@@ -14,7 +14,7 @@ from pathlib import Path
 import os
 from datetime import timedelta
 import environ
-
+import cloudinary_storage
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -46,7 +46,11 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    
+    # static and media storage
+    'cloudinary_storage',
     'django.contrib.staticfiles',
+    'cloudinary',
 
     # project apps
     'projects.apps.ProjectsConfig',
@@ -225,11 +229,22 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': env.str("CLOUDINARY_CLOUD_NAME"),
+    'API_KEY': env.str("CLOUDINARY_API_KEY"),
+    'API_SECRET': env.str("CLOUDINARY_API_SECRET")
+}
+
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
 
 # Set Debug to false in production
 if os.getcwd() == "/app":
