@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{% extends 'main.html' %}
+
+<!-- load static -->
+{% load static %}
+
+<!-- all body data -->
+{% block bodyblock %}
+<br /><br /><br />
+<div class="auth">
+	<div class="card">
+		<div class="auth__header text-center">
+			<a>
+				<img src="{% static 'images/icon.svg' %}" alt="icon" />
+			</a>
+
+			{% if not_valid %}
+
+			<h3>Invalid Verification</h3>
+			<br />
+			<p>Your account varification link is invalid or expired.</p>
+
+			{% elif verified %}
+
+			<h3>Already Verified</h3>
+			<br />
+			<p>Your account is already varified, please login.</p>
+
+			{% else %}
+
+			<h3>Verification Successfull</h3>
+			<br />
+			<p>Your account is successfully varified.</p>
+
+			{% endif %}
+		</div>
+
+		<br /><br />
+		<div class="auth__actions">
+			<div class="auth__alternative">
+				<p>Don’t have an Account?</p>
+				<a href="{% url 'register' %}">Sign Up</a>
+			</div>
+			<div class="auth__alternative">
+				<a href="{% url 'login' %}">Login</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

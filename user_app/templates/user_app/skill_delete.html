@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+{% extends 'main.html' %}
+
+<!-- all body data -->
+{% block bodyblock %}
+<main class="formPage my-xl">
+	<div class="content-box">
+		<div class="formWrapper">
+			<a class="backButton" href="{% url 'user_profile' skill.owner.id %}"><i class="im im-angle-left"></i></a>
+			<br />
+			<h3 class="singleProject__subtitle" style="text-align: center">Delete the Skill</h3>
+			<br />
+
+			<form class="form" method="POST">
+				{% csrf_token %}
+				<p>Are your sure you want to delete "<span style="color:red">{{skill.name}}</span>" ?</p>
+				<a class="btn btn--sub btn--lg  my-md" href="{% url 'user_profile' skill.owner.id %}">&#x2190 Go Back</a>
+				<input class="btn btn--sub btn--lg  my-md" type="submit" value="Delete" />
+			</form>
+		</div>
+	</div>
+</main>
+
+{% endblock %}

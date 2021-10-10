@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% extends 'main.html' %}
+
+<!-- load static -->
+{% load static %}
+
+<!-- all body data -->
+{% block bodyblock %}
+<br /><br /><br />
+<div class="auth">
+	<div class="card">
+		<div class="auth__header text-center">
+			<a>
+				<img src="{% static 'images/icon.svg' %}" alt="icon" />
+			</a>
+
+			<h3>Account Verification</h3>
+			<br />
+			<p>We’ve sent you an email with a account varification link. Please check your email and varify your account before login. This varification email will be expired after 24 hour.</p>
+		</div>
+
+		<br /><br />
+		<div class="auth__actions">
+			<div class="auth__alternative">
+				<p>Don’t have an Account?</p>
+				<a href="{% url 'register' %}">Sign Up</a>
+			</div>
+			<div class="auth__alternative">
+				<a href="{% url 'login' %}">Login</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

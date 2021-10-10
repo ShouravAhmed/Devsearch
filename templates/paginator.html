@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% load static %}
+
+<div class="pagination">
+	<ul class="container">
+		<!-- previous -->
+		{% if item_list.has_previous %}
+		<li><a href="?search_text={{ search_text }}&page={{ item_list.previous_page_number }}" class="btn">&#10094; Prev</a></li>
+		{% else %}
+		<li><a class="btn btn--disabled">&#10094; Prev</a></li>
+		{% endif %}
+
+		<!-- pages -->
+		{% for page in custom_pagination_range %}
+		<li><a href="?{% if search_text != '' %}search_text={{ search_text }}&{% endif %}page={{ page }}" class="btn {% if item_list.number == page %}btn--sub{% endif %}">{{ page | stringformat:"02d" }}</a></li>
+		{% endfor %}
+
+		<!-- next -->
+		{% if item_list.has_next %}
+		<li><a href="?search_text={{ search_text }}&page={{ item_list.next_page_number }}" class="btn">Next &#10095;</a></li>
+		{% else %}
+		<li><a class="btn btn--disabled">Next &#10095;</a></li>
+		{% endif %}
+	</ul>
+</div>
