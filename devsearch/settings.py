@@ -13,16 +13,23 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 from datetime import timedelta
+import environ
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Load environment variables
+root = environ.Path(__file__) - 2  # get root of the project
+env = environ.Env()
+environ.Env.read_env(root('.env'))  # reading .env file from project root
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-isavood)ua%sl**qy)xr&8i3*2gaa+wlxmom)j@x3ku7argnrb'
+SECRET_KEY = env.str('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -132,31 +139,18 @@ WSGI_APPLICATION = 'devsearch.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 
-# elephentsql.com - postgresql
-# ----------------------
+# elephentsql.com - postgresql | default local postfresql
+# ----------------------------------------------------------
 DATABASES = {
     'default': {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": 'czygkgwo',
-        "USER": 'czygkgwo',
-        "PASSWORD": 'CVXC_s1mJ1Sl-wFsmH520Hyv9z1x-SDs',
-        "HOST": 'john.db.elephantsql.com',
-        "PORT": 5432
+        "NAME": env.str("DATABASE_NAME", default="devsearch"),
+        "USER": env.str("DATABASE_OWNER", default="ah_med"),
+        "PASSWORD": env.str("DATABASE_PASSWORD", default="admin"),
+        "HOST": env.str("DATABASE_HOST", default="localhost"),
+        "PORT": env.int("DATABASE_PORT", default=5432),
     }
 }
-
-# local - postgresql
-# ----------------------
-# DATABASES = {
-#     'default': {
-#         "ENGINE": "django.db.backends.postgresql",
-#         "NAME": 'devsearch',
-#         "USER": 'ah_med',
-#         "PASSWORD": 'admin',
-#         "HOST": 'localhost',
-#         "PORT": 5432
-#     }
-# }
 
 
 # local - sqlite3
@@ -209,12 +203,12 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 # Email Backend
 # --------------------------------------------------
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'noreplay.ahmed.developer@gmail.com'
-EMAIL_HOST_PASSWORD = 'xytghmbtehsstmlp'
+EMAIL_BACKEND = env.str('EMAIL_BACKEND')
+EMAIL_HOST = env.str('EMAIL_HOST')
+EMAIL_PORT = env.int('EMAIL_PORT')
+EMAIL_USE_TLS = env.bool('EMAIL_USE_TLS')
+EMAIL_HOST_USER = env.str('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = env.str('EMAIL_HOST_PASSWORD')
 # --------------------------------------------------
 
 
