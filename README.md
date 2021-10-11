@@ -1,15 +1,15 @@
 # *Devsearch*
 
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
-[![GitHub license](https://img.shields.io/github/license/ShouravAhmed/Devsearch.svg)](https://github.com/ShouravAhmed/Devsearch/blob/main/LICENSE)
-[![GitHub forks](https://img.shields.io/github/forks/ShouravAhmed/Devsearch.svg?style=social&label=Fork)](https://github.com/ShouravAhmed/Devsearch)
-[![GitHub stars](https://img.shields.io/github/stars/ShouravAhmed/Devsearch.svg?style=social&label=Stars)](https://github.com/ShouravAhmed/Devsearch)
+[![GitHub license](https://img.shields.io/github/license/ShouravAhmed/devsearch.svg)](https://github.com/ShouravAhmed/Devsearch/blob/main/LICENSE)
+[![GitHub forks](https://img.shields.io/github/forks/ShouravAhmed/devsearch.svg?style=social&label=Fork)](https://github.com/ShouravAhmed/Devsearch)
+[![GitHub stars](https://img.shields.io/github/stars/ShouravAhmed/devsearch.svg?style=social&label=Stars)](https://github.com/ShouravAhmed/Devsearch)
 
 A place where developers can showcase their skills and projects.
 
 ### Features
 
-* [x] Personal profile
+* [x] Create Personal profile
 * [x] Add skills
 * [x] Add Projects
 
