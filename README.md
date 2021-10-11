@@ -15,7 +15,7 @@ A place where developers can showcase their skills and projects.
 
 ### Installation and Use
 
-Live Url: http://devsearch-ahmed.herokuapp.com/
+*Live Url*: http://devsearch-ahmed.herokuapp.com/
 
 1. Clone the repository
 2. Install python3.9, create a virtual environment
