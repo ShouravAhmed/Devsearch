@@ -19,6 +19,9 @@
 				<li class="header__menuItem">
 					<a href="{% url 'project_list' %}">Projects</a>
 				</li>
+				<li class="header__menuItem">
+					<a href="{% url 'get_routes' %}">API</a>
+				</li>
 
 				{% if request.user.is_authenticated %}
 
